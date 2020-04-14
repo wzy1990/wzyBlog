@@ -1,12 +1,12 @@
 {
-  "name": "myBlog",
+  "name": "wzyBlog",
   "version": "1.0.0",
-  "description": "",
+  "description": "a wonderful blog design by vuepress!",
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs"
   },
-  "author": "poetry",
+  "author": "wzy1990",
   "license": "ISC",
   "resolutions": {
     "terser": "3.14.1"

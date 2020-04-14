@@ -8,6 +8,7 @@ module.exports = {
       lineNumbers: false
     },
     themeConfig: {
+        logo: 'images/vue_logo.png',
         nav: [
           { text: '基础', link: '/base/' },
           { text: '进阶', link: '/improve/' },
