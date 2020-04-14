@@ -1,0 +1,22 @@
+{
+  "name": "myBlog",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "author": "poetry",
+  "license": "ISC",
+  "resolutions": {
+    "terser": "3.14.1"
+  },
+  "devDependencies": {
+    "vuepress": "0.14.8",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0"
+  },
+  "dependencies": {
+    
+  }
+}
