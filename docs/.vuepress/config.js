@@ -1,5 +1,5 @@
 module.exports = {
-    base:'/FE-Interview-Questions/',
+    base:'/wzyBlog/',
     // dest:'public', //指定 vuepress build 的输出目录
     title: 'FE-Interview',
     description: '前端面试题整理',
