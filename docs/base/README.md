@@ -41,7 +41,7 @@ pageClass: custom-code-highlight
   - 向`URL`指定的资源提交数据或附加新的数据
 
 - `PUT`方法
-  - 跟`POST`方法很像，也是想服务器提交数据。但是，它们之间有不同。`PUT`指定了资源在服务器上的位置，而`POST`没有
+  - 跟`POST`方法很像，也是向服务器提交数据。但是，它们之间有不同。`PUT`指定了资源在服务器上的位置，而`POST`没有
 
 - `HEAD`方法
   - 只请求页面的首部
@@ -177,8 +177,7 @@ pageClass: custom-code-highlight
 - 图片方面
    - 优化图片：根据实际颜色需要选择色深、压缩
    - 优化`css`精灵
-   - 不要在`HTML`中拉伸图片
-
+ 
 
 ### 6 HTTP状态码及其含义
 
@@ -1474,7 +1473,7 @@ function onBack(res) {
 
 ```
 
-- **document.domain + iframe跨域**
+- **document.domain + iframe跨域**【基于iframed的跨域解决方案有3种, 包括：window.name, document.domain, location.hash】
 
 > 此方案仅限主域相同，子域不同的跨域应用场景
 
@@ -1496,9 +1495,12 @@ document.domain = 'domain.com';
 alert('get js data from parent ---> ' + window.parent.user);
 ```
 
-- **nginx代理跨域**
+- **CORS跨域資源共享：后端在头部信息里面设置安全域名**
+- **基于http proxy实现跨域：通过webpack devserver设置代理**
+- **基于post message实现跨域**
+- **websocket跨域请求**
+- **nginx反向代理跨域**
 - **nodejs中间件代理跨域**
-- **后端在头部信息里面设置安全域名**
 
 
 ### 11 模块化开发怎么做？
@@ -1625,8 +1627,8 @@ var module1 = (function(){
 
 ```css
 body,ul,li,ol,dl,dt,dd,form,input,h1,h2,h3,h4,h5,h6,p{
-margin:0;
-padding:0;
+	margin:0;
+	padding:0;
 }
 ```
 - `IE`下,`event`对象有`x`,`y`属性,但是没有`pageX`,`pageY`属性
@@ -1738,7 +1740,7 @@ promise.then(onFulfilled, onRejected)
 
 ### 30 介绍js的基本数据类型
 
-- `Undefined`、`Null`、`Boolean`、`Number`、`String`
+- `Undefined`、`Null`、`Boolean`、`Number`、`String`、`Symbol`
 
 ### 31 介绍js有哪些内置对象
 - `Object` 是 `JavaScript` 中所有对象的父对象
@@ -1759,7 +1761,7 @@ promise.then(onFulfilled, onRejected)
 
 ### 33 JavaScript有几种类型的值
 
-- 栈：原始数据类型（`Undefined`，`Null`，`Boolean`，`Number`、`String`）
+- 栈：原始数据类型（`Undefined`，`Null`，`Boolean`，`Number`、`String`、`Symbol`）
 - 堆：引用数据类型（对象、数组和函数）
 - 两种类型的区别是：存储位置不同；
 - 原始数据类型直接存储在栈(`stack`)中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储；
@@ -1783,11 +1785,11 @@ person={firstname:"Mark",lastname:"Yun",age:25,eyecolor:"black"};
 
 ```javascript
 function Person(){}
-	var person=new Person();//定义一个function，如果使用new"实例化",该function可以看作是一个Class
-        person.name="Mark";
-        person.age="25";
-        person.work=function(){
-        alert(person.name+" hello...");
+var person=new Person();//定义一个function，如果使用new"实例化",该function可以看作是一个Class
+person.name="Mark";
+person.age="25";
+person.work=function(){
+    alert(person.name+" hello...");
 }
 person.work();
 ```
@@ -1796,12 +1798,12 @@ person.work();
 
 ```javascript
 function Pet(name,age,hobby){
-       this.name=name;//this作用域：当前对象
-       this.age=age;
-       this.hobby=hobby;
-       this.eat=function(){
-           alert("我叫"+this.name+",我喜欢"+this.hobby+",是个程序员");
-       }
+    this.name=name;//this作用域：当前对象
+    this.age=age;
+    this.hobby=hobby;
+    this.eat=function(){
+        alert("我叫"+this.name+",我喜欢"+this.hobby+",是个程序员");
+    }
 }
 var maidou =new Pet("麦兜",25,"coding");//实例化、创建对象
 maidou.eat();//调用eat方法
@@ -1811,12 +1813,12 @@ maidou.eat();//调用eat方法
 
 ```javascript
 var wcDog =new Object();
-     wcDog.name="旺财";
-     wcDog.age=3;
-     wcDog.work=function(){
+    wcDog.name="旺财";
+    wcDog.age=3;
+    wcDog.work=function(){
        alert("我是"+wcDog.name+",汪汪汪......");
-     }
-     wcDog.work();
+    }
+    wcDog.work();
 ```
 
 - 用原型方式来创建
@@ -1835,7 +1837,7 @@ wangcai.eat();
 - 用混合方式来创建
 
 ```javascript
- function Car(name,price){
+function Car(name,price){
 	this.name=name;
 	this.price=price;
 }
@@ -1856,7 +1858,7 @@ camry.sell();
 ### 36 null，undefined 的区别
 
 
-- `undefined`   表示不存在这个值。
+- `undefined` 表示不存在这个值。
 - `undefined` :是一个表示"无"的原始值或者说表示"缺少值"，就是此处应该有一个值，但是还没有定义。当尝试读取时会返回 `undefined`
 - 例如变量被声明了，但没有赋值时，就等于`undefined`
 
@@ -3723,7 +3725,7 @@ module.exports = function(src) {
         removeEvent : function(element, type, handler) {
             if (element.removeEventListener) {
                 element.removeEventListener(type, handler, false);
-            } else if (element.datachEvent) {
+            } else if (element.detachEvent) {
                 element.detachEvent('on' + type, handler);
             } else {
                 element['on' + type] = null;
@@ -3765,22 +3767,23 @@ function isArray(arg) {
 ### 3 冒泡排序
 
 - 每次比较相邻的两个数，如果后一个比前一个小，换位置
+- 时间复杂度：平均O(n²)， 最好O(n)， 最坏O(n²)
+- 空间复杂度：O(1)
 
 ```javascript
 var arr = [3, 1, 4, 6, 5, 7, 2];
 
 function bubbleSort(arr) {
-for (var i = 0; i < arr.length - 1; i++) {
-    for(var j = 0; j < arr.length - i - 1; j++) {
-        if(arr[j + 1] < arr[j]) {
-            var temp;
-            temp = arr[j];
-            arr[j] = arr[j + 1];
-            arr[j + 1] = temp;
-        }
-    }
-}
-return arr;
+	for (var i = 0; i < arr.length - 1; i++) {
+		for(var j = 0; j < arr.length - i - 1; j++) {
+			if(arr[j + 1] < arr[j]) {
+				var temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+	return arr;
 }
 
 console.log(bubbleSort(arr));
@@ -3789,6 +3792,11 @@ console.log(bubbleSort(arr));
 ### 4 快速排序
 
 - 采用二分法，取出中间数，数组每次和中间数比较，小的放到左边，大的放到右边
+- 时间复杂度：平均O(n²)， 最好O(n)， 最坏O(n²)
+- -最好：O(n * logn)，所有数均匀分布在基数的两边，此时的递归就是不断地二分左右序列。
+- -最坏：O(n²)，所有数都分布在基数的一边，此时划分左右序列就相当于是插入排序。
+- -平均：O(n * logn)
+- 空间复杂度：O(logn)
 
 ```javascript
 var arr = [3, 1, 4, 6, 5, 7, 2];
@@ -3823,20 +3831,15 @@ console.log(quickSort(arr));
 
 ```javascript
 function GetBytes(str){
+    var len = str.length;
+    var bytes = len;
 
-        var len = str.length;
-
-        var bytes = len;
-
-        for(var i=0; i<len; i++){
-
-            if (str.charCodeAt(i) > 255) bytes++;
-
-        }
-
-        return bytes;
-
+    for(var i=0; i<len; i++){
+        if (str.charCodeAt(i) > 255) bytes++;
     }
+
+    return bytes;
+}	
 
 alert(GetBytes("你好,as"));
 
@@ -3914,7 +3917,7 @@ Function.prototype.bind = function(ctx) {
 
 ```js
   // 方法一：
-  var lis=document.getElementById('2223').getElementsByTagName('li');
+  var lis=document.getElementById('test').getElementsByTagName('li');
   for(var i=0;i<3;i++)
   {
       lis[i].index=i;
@@ -3923,7 +3926,7 @@ Function.prototype.bind = function(ctx) {
   }
 
  //方法二：
- var lis=document.getElementById('2223').getElementsByTagName('li');
+ var lis=document.getElementById('test').getElementsByTagName('li');
  for(var i=0;i<3;i++)
  {
      lis[i].index=i;
@@ -4064,7 +4067,7 @@ function flatten(arr){
 > 多台服务器共同协作，不让其中某一台或几台超额工作，发挥服务器的最大作用
 
 - `http`重定向负载均衡：调度者根据策略选择服务器以302响应请求，缺点只有第一次有效果，后续操作维持在该服务器
-dns负载均衡：解析域名时，访问多个`ip`服务器中的一个（可监控性较弱）
+- dns负载均衡：解析域名时，访问多个`ip`服务器中的一个（可监控性较弱）
 - 反向代理负载均衡：访问统一的服务器，由服务器进行调度访问实际的某个服务器，对统一的服务器要求大，性能受到 服务器群的数量
 
 ### 2 CDN
@@ -4192,7 +4195,7 @@ Element.prototype.triggerEvent  = function(en){
 - 化繁为简
 - 组件抽象
 
-## 十一、一些常见问题
+## 十一、一些常见面试问题（请自行总结）
 
 - 自我介绍
 - 面试完你还有什么问题要问的吗

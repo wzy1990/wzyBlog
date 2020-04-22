@@ -8,8 +8,8 @@ features:
 - title: 进阶篇
   details: 提炼分析面试难点，助你快速理解
 - title: 通识篇
-  details: 巩固计算机基础
-footer: Copyright © 2018 poetries
+  details: 巩固计算机基础     
+footer: Copyright © 2020 wzy1990
 ---
 
 
