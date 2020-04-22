@@ -2,7 +2,7 @@ module.exports = {
     base:'/',
     // dest:'public', //指定 vuepress build 的输出目录
     title: '前端知识点总结整理',
-    description: '前端面试题整理',
+    description: '前端相关知识整理汇总，希望对大家学习提供帮助，持续更新中。。。',
     // 为每个代码块显示行号
     markdown: {
       lineNumbers: false
