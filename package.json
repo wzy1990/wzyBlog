@@ -12,9 +12,9 @@
     "terser": "3.14.1"
   },
   "devDependencies": {
-    "vuepress": "0.14.8",
+    "vuepress": "1.9.7",
     "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^13.2.0"
   },
   "dependencies": {}
 }
